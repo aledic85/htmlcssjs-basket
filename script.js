@@ -23,7 +23,7 @@ function getRandomId() {
   }
 
   var rndId = rndChars + rndVals;
-
+  
   return rndId;
 }
 
@@ -39,7 +39,6 @@ function getRandomPlayer() {
     "twoPerc": twoPerc,
     "threePerc": threePerc,
   }
-
   return player
 }
 
@@ -52,7 +51,6 @@ function isPresent(player, players) {
       present = true;
     }
   }
-
   return present;
 }
 
@@ -60,7 +58,7 @@ function getRandomPlayers() {
 
   var players = [];
 
-  for (var i = 0; i < 10000; i++) {
+  for (var i = 0; i < 10; i++) {
 
     var player = getRandomPlayer();
     if (!isPresent(player, players)) {
@@ -69,18 +67,83 @@ function getRandomPlayers() {
     } else {
       i--;
     }
-
   }
   return players;
 }
 
+function updateImput(players) {
 
+  for (var i = 0; i < players.length; i++) {
 
+    var player = players[i];
+    var object = document.createElement("option");
 
-function init(){
+    object.value = player.id;
+    $("#players").append(object)
+  }
+}
+
+function playerSelector(players) {
+
+  var me = $("#usr-input");
+  var selId = me.val();
+
+  for (var i = 0; i < players.length; i++) {
+
+    var player;
+
+    if (selId == players[i].id) {
+      player = players[i]
+    }
+  }
+
+  var id = $("#id > span.content");
+  var points = $("#points > span.content");
+  var bounce = $("#bounce > span.content");
+  var mistake = $("#mistake > span.content");
+  var twoPerc = $("#twoPerc > span.content");
+  var threePerc = $("#threePerc > span.content");
+
+  id.text(player.id);
+  points.text(player.points);
+  bounce.text(player.bounce);
+  mistake.text(player.mistake);
+  twoPerc.text(player.twoPerc);
+  threePerc.text(player.threePerc);
+}
+
+function clearButton() {
+
+  var input = $("#usr-input");
+  input.val("");
+
+  var id = $("#id > span.content");
+  var points = $("#points > span.content");
+  var bounce = $("#bounce > span.content");
+  var mistake = $("#mistake > span.content");
+  var twoPerc = $("#twoPerc > span.content");
+  var threePerc = $("#threePerc > span.content");
+
+  id.text("");
+  points.text("");
+  bounce.text("");
+  mistake.text("");
+  twoPerc.text("");
+  threePerc.text("");
+}
+
+function init() {
 
   var players = getRandomPlayers();
-  console.log(players);
+  updateImput(players);
+
+  var input = $("#usr-input");
+  input.change(function() {
+    playerSelector(players)
+  });
+
+  var button = $("#clear-btn");
+  button.click(clearButton);
 }
 
 $(document).ready(init);
