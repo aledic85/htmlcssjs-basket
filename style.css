@@ -2,6 +2,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 30px;
+}
+
+body {
+  background-image: url("https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Faz616578.vo.msecnd.net%2Ffiles%2F2016%2F09%2F04%2F636085803082821242-150117908_iStock_000014948645XLarge_basketball.jpg&f=1");
+  background-size: cover;
+  font-family: 'Oswald', sans-serif;
+  color: white;
+}
+
+span.content {
+  color: rgb(217, 62, 13);
+}
+
+h1 {
+  font-size: 50px;
+}
+
+#clear-btn {
+  font-size: 25px;
+  background-color: rgb(73, 199, 179);
+  font-family: 'Oswald', sans-serif;
+  border-radius: 5px;
+  width: 70px;
 }
 
 .margin-horiz-auto {
@@ -16,7 +40,6 @@
   width: 100vw;
   height: 100vh;
   padding: 50px;
-  background: #dedede;
 }
 
 .input-container {
